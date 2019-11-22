@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Klin Fix</string>
+    <string name="logo">logo</string>
+    <string name="name">Name</string>
+    <string name="name_hint">Rahmatsyah</string>
+    <string name="email">Email</string>
+    <string name="email_hint">name@company.com</string>
+    <string name="password">Password</string>
+    <string name="password_hint">********</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="phone_number">Mobile Phone Number</string>
+    <string name="register">Register</string>
+    <string name="login_suggest">Already have an account? <b>Login</b></string>
+    <string name="terms_title">By singing up you have agreed to our</string>
+    <string name="terms_sub_title">Terms of Use and Privacy Policy</string>
+    <string name="number_hint">+62853493*****</string>
+    <string name="username">Username</string>
+    <string name="username_hint">rahmat</string>
+    <string name="register_suggest">Doesn\'t have an account yet? <b>Register</b></string>
+    <string name="login">Login</string>
 </resources>
