@@ -6,12 +6,12 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-kotlin{
-    experimental{
+kotlin {
+    experimental {
         coroutines 'enable'
     }
 }
-androidExtensions{
+androidExtensions {
     experimental = true
 }
 
@@ -39,7 +39,7 @@ android {
 dependencies {
     //config
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
