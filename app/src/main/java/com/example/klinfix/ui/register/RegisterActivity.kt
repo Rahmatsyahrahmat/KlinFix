@@ -76,7 +76,8 @@ class RegisterActivity : AppCompatActivity(),RegisterListener {
     }
 
     override fun onSuccess() {
-        startActivity(Intent(this,MainActivity::class.java))
+        Toast.makeText(this,"Register Successful, check your email to verify your registration",Toast.LENGTH_LONG).show()
+        startActivity(Intent(this,LoginActivity::class.java))
     }
 
     @SuppressLint("SetTextI18n")

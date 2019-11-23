@@ -1,6 +1,7 @@
 package com.example.klinfix.utils
 
 import com.example.klinfix.data.model.User
+import com.example.klinfix.data.source.remote.reponse.LoginResponse
 import com.example.klinfix.data.source.remote.reponse.RegisterResponse
 import com.google.gson.JsonObject
 import okhttp3.Credentials
@@ -34,8 +35,8 @@ object JsonHelper {
         service = retrofit.create(IJsonHelper::class.java)
     }
 
-    fun register(user: User):Call<JsonObject> = service.register(user)
+    fun register(user: User):Call<RegisterResponse> = service.register(user)
 
-    fun login(user: User):Call<JsonObject> = service.login(Credentials.basic(user.username,user.password),user)
+    fun login(user: User):Call<LoginResponse> = service.login(Credentials.basic(user.username,user.password),user)
 
 }

@@ -2,8 +2,7 @@ package com.example.klinfix.data.source.remote.reponse
 
 import com.example.klinfix.data.model.User
 
-data class RegisterResponse (
+data class LoginResponse (
     var code:Int,
-    var data:User?,
-    var message:String?
+    var data:User
 )
