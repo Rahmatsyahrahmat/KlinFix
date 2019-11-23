@@ -60,7 +60,15 @@ class RegisterActivity : AppCompatActivity(),RegisterListener {
         }
 
         if (etEmail.text.isEmpty()){
-            etEmail.error = "Number Phone Empty"
+            etEmail.error = "Email Empty"
+            return false
+        }
+        if (etAddress.text.isEmpty()){
+            etAddress.error = "Address Empty"
+            return false
+        }
+        if (etPhoneNumber.text.isEmpty()){
+            etPhoneNumber.error = "Phone Empty"
             return false
         }
         return true

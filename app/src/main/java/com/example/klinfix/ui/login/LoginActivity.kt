@@ -1,6 +1,7 @@
 package com.example.klinfix.ui.login
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -53,7 +54,11 @@ class LoginActivity : AppCompatActivity() , LoginListener{
         btnLogin.text = ""
     }
 
-    override fun onSuccess() {
+    override fun onSuccess(credential:String) {
+        val sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("credential",credential)
+        editor.apply()
         Toast.makeText(this,"Success Login",Toast.LENGTH_LONG).show()
         startActivity(Intent(this,MainActivity::class.java))
     }

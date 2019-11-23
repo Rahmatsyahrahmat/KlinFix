@@ -3,7 +3,7 @@ package com.example.klinfix.ui.login
 import androidx.lifecycle.ViewModel
 import com.example.klinfix.data.source.Repository
 import com.example.klinfix.data.source.remote.reponse.LoginResponse
-import com.google.gson.JsonObject
+import okhttp3.Credentials
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +29,8 @@ class LoginViewModel(private val repository: Repository):ViewModel() {
 
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     if (response.body()!=null){
-                        loginListener?.onSuccess()
+                        loginListener?.onSuccess(Credentials.basic(username!!,password!!))
+
                     }
                     else{
                         val error = JSONObject(response.errorBody()?.string().toString()).getString("error")

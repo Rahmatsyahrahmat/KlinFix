@@ -1,26 +1,31 @@
 package com.example.klinfix.ui.profile
 
-
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.klinfix.R
 
-/**
- * A simple [Fragment] subclass.
- */
 class ProfileFragment : Fragment() {
 
+    private lateinit var profileViewModel: ProfileViewModel
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        profileViewModel =
+            ViewModelProviders.of(this).get(ProfileViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_profile, container, false)
+        val textView: TextView = root.findViewById(R.id.text_notifications)
+        profileViewModel.text.observe(this, Observer {
+            textView.text = it
+        })
+        return root
     }
-
-
 }

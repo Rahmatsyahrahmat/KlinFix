@@ -20,16 +20,12 @@ data class User (
     var password:String,
     @SerializedName("email")
     @Expose
-    var email:String
-){
-    fun toJsonObject():JsonObject{
+    var email:String,
+    @SerializedName("address")
+    @Expose
+    var address:String,
+    @SerializedName("phone")
+    @Expose
+    var phone:String
 
-        val jsonObject = JsonObject()
-        jsonObject.addProperty("name",name)
-        jsonObject.addProperty("username",username)
-        jsonObject.addProperty("password",password)
-        jsonObject.addProperty("email",email)
-
-        return jsonObject
-    }
-}
+)

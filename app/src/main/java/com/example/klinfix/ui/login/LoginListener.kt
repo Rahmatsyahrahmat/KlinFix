@@ -4,6 +4,6 @@ interface LoginListener {
     fun validate():Boolean
     fun toRegister()
     fun onLogin()
-    fun onSuccess()
+    fun onSuccess(credential: String)
     fun onFailure(message:String)
 }

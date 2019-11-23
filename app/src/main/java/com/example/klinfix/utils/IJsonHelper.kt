@@ -1,6 +1,8 @@
 package com.example.klinfix.utils
 
+import com.example.klinfix.data.model.Transaction
 import com.example.klinfix.data.model.User
+import com.example.klinfix.data.source.remote.reponse.CategoryResponse
 import com.example.klinfix.data.source.remote.reponse.LoginResponse
 import com.example.klinfix.data.source.remote.reponse.RegisterResponse
 import com.google.gson.JsonObject
@@ -17,5 +19,15 @@ interface IJsonHelper {
 
     @POST("auth/user")
     fun login(@Header("Authorization") authToken: String,@Body user: User):Call<LoginResponse>
+
+    @POST("user/profile")
+    fun edit(@Header("Authorization") authToken: String,@Field("address")address:String,@Field("phone")phone:String):Call<RegisterResponse>
+
+    @GET("category/")
+    fun getCategory():Call<CategoryResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("transaction/request")
+    fun order(@Header("Authorization")credential: String,@Body transaction: Transaction):Call<JsonObject>
 
 }

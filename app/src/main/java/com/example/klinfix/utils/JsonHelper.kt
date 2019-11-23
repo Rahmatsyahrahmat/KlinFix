@@ -1,5 +1,6 @@
 package com.example.klinfix.utils
 
+import com.example.klinfix.data.model.Transaction
 import com.example.klinfix.data.model.User
 import com.example.klinfix.data.source.remote.reponse.LoginResponse
 import com.example.klinfix.data.source.remote.reponse.RegisterResponse
@@ -38,5 +39,13 @@ object JsonHelper {
     fun register(user: User):Call<RegisterResponse> = service.register(user)
 
     fun login(user: User):Call<LoginResponse> = service.login(Credentials.basic(user.username,user.password),user)
+
+    fun edit(credetial:String,address:String,phone:String):Call<RegisterResponse> = service.edit(credetial,address,phone)
+
+    fun getCategory() = service.getCategory()
+
+    fun order(credential: String,subcategory:String,date_service:String,memo:String,address: String,lat:String,long:String):Call<JsonObject> = service.order(credential,
+        Transaction(subcategory,date_service,memo,address,lat,long)
+    )
 
 }

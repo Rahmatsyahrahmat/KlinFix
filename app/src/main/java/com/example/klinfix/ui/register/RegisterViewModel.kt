@@ -17,11 +17,13 @@ import retrofit2.Response
 
 class RegisterViewModel(private val repository: Repository): ViewModel() {
 
-    var name:String? = "rahmatsyah1"
-    var username:String? = "rahmatsyahrahmat1"
-    var password:String? = "Oioioioi1!"
-    var confirmPassword:String? = "Oioioioi1!"
-    var email:String? = "rahmatsyah1@gmail.com"
+    var name:String? = null
+    var username:String? = null
+    var password:String? = null
+    var confirmPassword:String? = null
+    var email:String? = null
+    var address:String? = null
+    var numberPhone:String? = null
 
     var registerListener:RegisterListener? = null
 
@@ -38,7 +40,7 @@ class RegisterViewModel(private val repository: Repository): ViewModel() {
 
                 override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                     if (response.body() !=null){
-                        registerListener?.onSuccess()
+                        completeRegistration(Credentials.basic(username!!,password!!))
                     }else{
 
                         val root = JSONObject(response.errorBody()?.string().toString()).getJSONObject("error")
@@ -50,6 +52,22 @@ class RegisterViewModel(private val repository: Repository): ViewModel() {
 
             })
         }
+    }
+
+    fun completeRegistration(credential:String){
+        repository.edit(credential,address!!,numberPhone!!).enqueue(object :Callback<RegisterResponse>{
+            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                registerListener?.onFailure(t.message.toString())
+            }
+
+            override fun onResponse(
+                call: Call<RegisterResponse>,
+                response: Response<RegisterResponse>
+            ) {
+                registerListener?.onSuccess()
+            }
+
+        })
     }
 
 }
